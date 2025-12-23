@@ -10,8 +10,42 @@
     <height>700</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>NaxiStudio Control</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources/control.qrc">
+    <normaloff>:/images/icons/control.svg</normaloff>:/images/icons/control.svg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow, #centralWidget{
+	background-color: #191D24;
+}
+
+QLineEdit{
+	background-color: #2D3340;
+	border: none;
+	border-radius: 9px;
+	padding: 7px 10px;
+}
+
+QPushButton{
+	background-color: #2D3340;
+	border: none;
+	border-radius: 9px;
+	padding: 5px;
+	color: #fff;
+}
+
+QPushButton:hover{
+	background-color: #292e38;
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -32,25 +66,61 @@
     </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="login">
+       <property name="styleSheet">
+        <string notr="true">#loginArea{
+	background-color: #1F232C;
+	border: 1px solid #2D3340;
+	border-radius: 10px;
+}
+
+QPushButton{
+	background-color: #FFA60A;
+	border: 1px solid #191D24;
+	border-radius: 9px;
+	color: #000;
+}
+
+QPushButton:hover{
+	background-color: #ca8102;
+	color: #000;
+}
+
+QPushButton::disabled{
+	background-color: transparent;
+	color: #ffffff;
+	border: 1px solid transparent;
+}
+
+#btnLogin{
+	padding: 7px 10px;
+}
+
+#labelLoginMessage{
+	color: #FF4848;
+}</string>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <property name="spacing">
-         <number>5</number>
+         <number>0</number>
         </property>
         <property name="leftMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
         <property name="topMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
         <property name="bottomMargin">
-         <number>10</number>
+         <number>0</number>
         </property>
         <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-         <widget class="QWidget" name="widget" native="true">
+         <widget class="QWidget" name="loginArea" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -65,47 +135,121 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <property name="spacing">
-            <number>5</number>
+            <number>10</number>
            </property>
            <property name="leftMargin">
-            <number>0</number>
+            <number>20</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>20</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>20</number>
            </property>
            <property name="bottomMargin">
-            <number>0</number>
+            <number>20</number>
            </property>
-           <item>
-            <widget class="QComboBox" name="comboBox">
-             <property name="currentText">
+           <item alignment="Qt::AlignmentFlag::AlignHCenter">
+            <widget class="QLabel" name="logoNaxiStudio">
+             <property name="maximumSize">
+              <size>
+               <width>285</width>
+               <height>50</height>
+              </size>
+             </property>
+             <property name="text">
               <string/>
              </property>
-             <property name="currentIndex">
-              <number>-1</number>
+             <property name="pixmap">
+              <pixmap resource="resources/control.qrc">:/images/icons/logo-text.svg</pixmap>
              </property>
-             <property name="placeholderText">
-              <string>Servidor</string>
+             <property name="scaledContents">
+              <bool>true</bool>
              </property>
-             <item>
-              <property name="text">
-               <string>localhost:8000 - Naxi FM</string>
-              </property>
-             </item>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit">
+            <widget class="QWidget" name="server" native="true">
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>5</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>15</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>15</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="textServer">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Servidor:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="labelServer">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Servidor não configurado</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnConfigServer">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/config.svg</normaloff>:/images/icons/config.svg</iconset>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineUser">
              <property name="placeholderText">
               <string>Usuário</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_2">
+            <widget class="QLineEdit" name="linePassword">
              <property name="echoMode">
               <enum>QLineEdit::EchoMode::Password</enum>
              </property>
@@ -115,9 +259,123 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton">
+            <widget class="QLabel" name="labelLoginMessage">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Ignored" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>40</height>
+              </size>
+             </property>
              <property name="text">
-              <string>login</string>
+              <string>...</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLogin">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
+             <property name="text">
+              <string>Entrar</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="loginFooterBar" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>50</height>
+           </size>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLoginAbout">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
+             <property name="text">
+              <string>Sobre</string>
+             </property>
+             <property name="icon">
+              <iconset resource="resources/control.qrc">
+               <normaloff>:/images/icons/about-black.svg</normaloff>:/images/icons/about-black.svg</iconset>
              </property>
             </widget>
            </item>
@@ -126,7 +384,35 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="main">
+      <widget class="QWidget" name="config">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QPushButton" name="btnConfigBack">
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::NoFocus</enum>
+          </property>
+          <property name="text">
+           <string>Voltar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="dashboard">
+       <property name="styleSheet">
+        <string notr="true">#mainTopBar{
+	background-color: #1F232C;
+	border-bottom: 1px solid #2D3340;
+}
+
+#mainMenu{
+	border-right: 1px solid #2D3340;
+}
+
+#mainMenu QPushButton{
+	padding: 7px;
+}</string>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <property name="spacing">
          <number>0</number>
@@ -144,7 +430,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QWidget" name="top" native="true">
+         <widget class="QWidget" name="mainTopBar" native="true">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -164,15 +450,51 @@
            </size>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="spacing">
+            <number>5</number>
+           </property>
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <property name="rightMargin">
+            <number>10</number>
+           </property>
+           <property name="bottomMargin">
+            <number>10</number>
+           </property>
            <item>
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="logoTop">
+             <property name="minimumSize">
+              <size>
+               <width>171</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>171</width>
+               <height>30</height>
+              </size>
+             </property>
              <property name="text">
-              <string>LOGO</string>
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources/control.qrc">:/images/icons/logo-text.svg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+             <property name="textInteractionFlags">
+              <set>Qt::TextInteractionFlag::NoTextInteraction</set>
              </property>
             </widget>
            </item>
            <item>
-            <spacer name="horizontalSpacer">
+            <spacer name="topHSpacer">
              <property name="orientation">
               <enum>Qt::Orientation::Horizontal</enum>
              </property>
@@ -184,23 +506,80 @@
              </property>
             </spacer>
            </item>
-           <item>
-            <widget class="QLabel" name="label">
+           <item alignment="Qt::AlignmentFlag::AlignVCenter">
+            <widget class="QLabel" name="labelUserIcon">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
              <property name="text">
-              <string>User</string>
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="resources/control.qrc">:/images/icons/user.svg</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="pushButton_5">
+            <widget class="QLabel" name="labelTopNameUser">
+             <property name="text">
+              <string>name</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Policy::Fixed</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLogout">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
              <property name="text">
-              <string>sair</string>
+              <string> Sair</string>
+             </property>
+             <property name="icon">
+              <iconset resource="resources/control.qrc">
+               <normaloff>:/images/icons/logout.svg</normaloff>:/images/icons/logout.svg</iconset>
              </property>
             </widget>
            </item>
@@ -232,7 +611,7 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="QWidget" name="menu" native="true">
+            <widget class="QWidget" name="mainMenu" native="true">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -247,7 +626,7 @@
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_4">
               <property name="spacing">
-               <number>5</number>
+               <number>7</number>
               </property>
               <property name="leftMargin">
                <number>10</number>
@@ -262,28 +641,148 @@
                <number>10</number>
               </property>
               <item>
-               <widget class="QPushButton" name="pushButton_2">
+               <widget class="QPushButton" name="btnCatalog">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
                 <property name="text">
-                 <string>PushButton</string>
+                 <string> Catálogo</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/catalog.svg</normaloff>:/images/icons/catalog.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_3">
+               <widget class="QPushButton" name="btnMusical">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
                 <property name="text">
-                 <string>PushButton</string>
+                 <string> Programação</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/music.svg</normaloff>:/images/icons/music.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="pushButton_4">
+               <widget class="QPushButton" name="btnCommercial">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
                 <property name="text">
-                 <string>PushButton</string>
+                 <string> Comercial</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/commercial.svg</normaloff>:/images/icons/commercial.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
                 </property>
                </widget>
               </item>
               <item>
-               <spacer name="verticalSpacer">
+               <widget class="QPushButton" name="btnReport">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string> Relatórios</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/document.svg</normaloff>:/images/icons/document.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string>Usuários</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/user.svg</normaloff>:/images/icons/user.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btnSettings">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string> Configurações</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/config-line.svg</normaloff>:/images/icons/config-line.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="menuVSpacer">
                 <property name="orientation">
                  <enum>Qt::Orientation::Vertical</enum>
                 </property>
@@ -295,16 +794,42 @@
                 </property>
                </spacer>
               </item>
+              <item>
+               <widget class="QPushButton" name="btnAbout">
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
+                </property>
+                <property name="text">
+                 <string> Sobre</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources/control.qrc">
+                  <normaloff>:/images/icons/about.svg</normaloff>:/images/icons/about.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
            <item>
-            <widget class="QStackedWidget" name="body">
+            <widget class="QStackedWidget" name="mainBody">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="currentIndex">
+              <number>0</number>
              </property>
              <widget class="QWidget" name="page"/>
              <widget class="QWidget" name="page_2"/>
@@ -320,6 +845,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources/control.qrc"/>
+ </resources>
  <connections/>
 </ui>
